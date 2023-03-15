@@ -35,8 +35,8 @@ class MongoCRUD {
     /**
      * Find all records
      */
-    findAll() {
-        return this.model.find({});
+    findAll(params) {
+        return this.model.find(params);
     }
 
     /**

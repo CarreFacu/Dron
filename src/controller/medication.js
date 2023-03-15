@@ -28,9 +28,7 @@ const Medication = require('../models/medicationSchema');
             const med = await MedicationService.create(medication)
             res.send({ status: "Ok", data: med})
         }catch(err){
-            res.send({ status: "Error"})
-            throw err
-
+            res.status(400).send(err);
         }
     }
     
