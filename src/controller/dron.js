@@ -67,6 +67,11 @@ const Dron = require('../models/dronSchema');
         }
 
     }
+    async findAllCronJob() {
+        const listDron = await DronService.findAll()
+        return listDron
+
+    }
     
 }
 module.exports = new DronController();
