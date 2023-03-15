@@ -18,23 +18,20 @@ const Medication = require('../models/medicationSchema');
     }
 
     async createNew  (req, res ){
-        const medication = new Medication({
-            name: req.body.name,
-            weight: req.body.weight,
-            code: req.body.code,
-            image: req.file.path,
-          });
-        const med = await MedicationService.create(medication)
-        res.send({ status: "Ok", data: med})
-    }
+        try{
+            const medication = new Medication({
+                name: req.body.name,
+                weight: req.body.weight,
+                code: req.body.code,
+                image: req.file.path,
+                });
+            const med = await MedicationService.create(medication)
+            res.send({ status: "Ok", data: med})
+        }catch(err){
+            res.send({ status: "Error"})
+            throw err
 
-    async updateMedication (req, res ){
-        const med = await MedicationService.update(req.params.id, req.body)
-        res.send({ status: "Ok", data: med})
-    }
-    async deleteMedication  (req, res ){
-        const med = await MedicationService.remove(req.params.id)
-        res.send({ status: "Ok", data: med})
+        }
     }
     
 }

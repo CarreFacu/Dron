@@ -16,7 +16,12 @@ class MongoCRUD {
      * @param {Object} userData
      */
     async create(data) {
-        return this.model.create(data);
+        try{
+            return this.model.create(data);
+        }catch(err){
+            throw err
+        }
+
     }
 
     /**
